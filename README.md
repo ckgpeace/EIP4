@@ -14,6 +14,7 @@ Defnitions:
 The ouput of the code:
 
 print(score)
+
 [0.041036612204968015, 0.9901]
 
 Accuracy: 0.9901 (From model9 in the code using 2 Maxpool layers)
