@@ -11,7 +11,7 @@
    #### Validation Accuracy - 82.32%
    #### Total params: 79,333
 
-3. Model Definition
+3. New Model Definition
 
 ``` python
 # 11th attempt
@@ -51,7 +51,7 @@ def scheduler(epoch, lr):
 model.compile(optimizer=Adam(lr=0.003),loss='categorical_crossentropy',metrics=['accuracy'])
 ```
 
-4. Changed model Epochs:
+4. New model Epochs:
 
 Epoch 1/50
 
