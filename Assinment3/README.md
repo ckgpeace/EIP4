@@ -13,13 +13,14 @@
 
 3. Model Definition
 
+``` python
+# 11th attempt
 
-####  11th attempt
+# Keeping adam as optimizer
+# Changing the image augmentaion
+# Changing model architecture
+# Adding GAP
 
-###### Keeping adam as optimizer
-###### Changing the image augmentaion
-###### Changing model architecture
-###### Adding GAP
 
 model=Sequential()
 model.add(SeparableConv2D(64, kernel_size=(3, 3), padding='same',  activation='relu', input_shape=(32,32,3))) #32x32x64 RF = 3
@@ -41,7 +42,6 @@ model.add(GlobalAveragePooling2D())
 
 model.add(Activation('softmax'))
 
-
 ###### Compile the model
 from keras.optimizers import Adam
 from keras.callbacks import LearningRateScheduler
@@ -49,6 +49,7 @@ def scheduler(epoch, lr):
   return round(0.003 * 1/(1 + 0.319 * epoch), 10)
 
 model.compile(optimizer=Adam(lr=0.003),loss='categorical_crossentropy',metrics=['accuracy'])
+```
 
 4. Changed model Epochs:
 
