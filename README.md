@@ -21,14 +21,14 @@ Accuracy: 0.9901 (From model9 in the code using 2 Maxpool layers)
 
 ## Assignment2
 
-# Total params: 14,060
-# Trainable params: 13,848
-# Non-trainable params: 212
+### Total params: 14,060
+### Trainable params: 13,848
+### Non-trainable params: 212
 
-# Test Accuracy = [0.019574204561067746, 0.9945]
+### Test Accuracy = [0.019574204561067746, 0.9945]
 
 
-# Epochs:
+### Epochs:
 
 Train on 60000 samples, validate on 10000 samples
 Epoch 1/20
