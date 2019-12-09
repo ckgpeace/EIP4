@@ -20,9 +20,7 @@ Note: List of all epochs are present below
 3. Change batch size in default model
 4. Use image augmentation
 
-## Gradcam examples
-
-https://github.com/ckgpeace/EIP4/issues/1
+### Gradcam images in the gradcam folder
 
 
 ### All Epoch for the model run
