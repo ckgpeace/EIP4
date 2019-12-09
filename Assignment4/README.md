@@ -1,14 +1,16 @@
 # Assignment4A
+
 All the 104 images are annotated as per guidelines @ https://ia.inkers.ai/
 
 # Assignment4B
 
 ### Epoch 42 achieved 90.2% validation accuracy using Resnet20-v1
-Test accuracy: 0.8968
 
 Epoch 42/50
 Learning rate:  0.0002130833
 391/391 [==============================] - 31s 79ms/step - loss: 0.2132 - acc: 0.9750 - val_loss: 0.5174 - val_acc: 0.9021
+
+Note: List of all epochs are present below
 
 ### Test accuracy: 0.8968
 
@@ -20,7 +22,7 @@ Learning rate:  0.0002130833
 
 ## Gradcam examples
 
-
+https://github.com/ckgpeace/EIP4/issues/1
 
 
 ### All Epoch for the model run
