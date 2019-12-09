@@ -1,23 +1,30 @@
-### Assignment4A
+# Assignment4A
 All the 104 images are annotated as per guidelines @ https://ia.inkers.ai/
 
-### Assignment4B
+# Assignment4B
 
-##### Epoch 42 achieved 90.2% validation accuracy using Resnet20-v1
+### Epoch 42 achieved 90.2% validation accuracy using Resnet20-v1
+Test accuracy: 0.8968
 
 Epoch 42/50
 Learning rate:  0.0002130833
 391/391 [==============================] - 31s 79ms/step - loss: 0.2132 - acc: 0.9750 - val_loss: 0.5174 - val_acc: 0.9021
 
-##### Strategy
+### Test accuracy: 0.8968
+
+### Strategy
 1. Changed the learning rate in default model
 2. Change the filter size in the default model
 3. Change batch size in default model
 4. Use image augmentation
 
+## Gradcam examples
 
-##### All Epoch for the model run
-##### --------------------------------------
+
+
+
+### All Epoch for the model run
+### ------------------------------------------------------------------------------------------------------------------
 Using real-time data augmentation.
 Epoch 1/50
 Learning rate:  0.003
@@ -269,3 +276,5 @@ Learning rate:  0.000180386
 391/391 [==============================] - 31s 79ms/step - loss: 0.1888 - acc: 0.9816 - val_loss: 0.5661 - val_acc: 0.8968
 
 Epoch 00050: val_acc did not improve from 0.90210
+
+
