@@ -20,7 +20,7 @@ Note: List of all epochs are present below
 3. Change batch size in default model
 4. Use image augmentation
 
-### Gradcam images in the gradcam folder
+### NOTE: Gradcam images in the gradcam folder in the assignment4 folder
 
 
 ### All Epoch for the model run
