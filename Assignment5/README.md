@@ -17,12 +17,14 @@ I have tried many thigs but could not achieve great results. Please find my appr
 Number of parameters: 555,638
 
 ### Few things:
-	1. I have recorded all my experiments in a PDF - "EIP_Assignment5_Strategy - Vanilla Experiments - Important.pdf" in the Assignment5 folder
+	1. I have recorded all my experiments in a PDF - "EIP_Assignment5_Strategy - Vanilla Experiments - Important.pdf" 
+	in the Assignment5 folder
 		1. It has all values of parameters that use or changed in the experiments
 		2. I have built over 30-models from but could record only 17 of them
 		3. You need to zoom a bit
 	2. I have put train-val loss plots in the the folder - "LossPlot"
 	3. Apart from best model, there other interesing models in the folder - "Other_Models"
+	4. I have included Stratey and end note in file - Assignment5_Strategyand EndNote
   
   ## Epochs for Vanilla8:
   Epoch 1/100
