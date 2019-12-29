@@ -1,6 +1,6 @@
 ### Result of Final Model:
 
-I have tried many thigs but could not achieve great results. Please find my approach in the document - .
+I have tried many thigs but could not achieve great results. Please find my approach in the document in attacged text.
 
 ### Best Model Name: Vannila8
 
