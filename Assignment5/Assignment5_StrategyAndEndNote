@@ -1,0 +1,203 @@
+My journey through the Assignment5:
+
+I am a beginner in Computer Vision and Deep Learning. I have done only Andrew NG's deep learning class(2 Years Back), few videos here, few blogs there and few hands on excercises here-n-there
+
+EIP4 was a great experience throughout. Complex and compound concepts in DL/CV  were explained in  logical and intuitive way with flavor of humor. 
+
+Let us start with the "Assignment of the Year"!
+
+Objective:
+	To classify any given input image into classes belonging to the provided 8 categories, each category has different classes:
+	Age: 5 , Bag: 3, Emotion: 4, Footwear: 3, Gender: 2, Image: 3, Pose: 3, Weight: 4
+
+	This is multi-label multi-class problem. If we consider MNIST data set, after one-hot it has 10 classes and there are 10 possible outcomes. In CIFAR-10, after one-hot encoding there are 10 clasess and 10 possible outcomes. In this assignment we have 8 labels and each label has its own class and there are 12,960 possible outcomes (5x3x4x3x2x3x3x4, as per my understanding). As I am a beginner, I think this is a tough problem to tackle.
+
+Strategy:
+I have followed the below steps/strategy to tackle this problem. It was based on the lectures by Rohan and my intuition( mostly works in real life but it failed at multiple levels in this assignment)
+
+	1. Data: 
+		We have ~13,000 images of size 224x224x3. 
+		Probable questions in mind:
+			1. Do we have enough data for this excercise?
+			2. What is distribution of classes in each of the label?
+				<Find labels in the code>
+				This shows the distribution of classes inside every label. It helps us in diagnosing out model
+			3. Plot few images from the data to get feel of the images
+				Some images in this assignment has black borders on both side
+			4. Do we need to resize the images?
+				Relation between image size, total images and number of classes
+			5. How does computation is affected by image size?
+			6. How does conversion speed is depended in image size?
+			7. How does "resizing" affect the training CNNs
+
+	2. Starter Code:
+		1. I have started with starter code. It took me a while to figure out how the starter code works 
+		2. I have set up everthing and model started training. 
+		3. No change in validation accuracy
+		4. changing LR
+		6. Slow training speed
+		7. No movement in the accuracy change
+		8. I did a lot other changes here and there but with no chance 
+		9. ~15 Mn Parameters !!!
+		10. Which network architecture is best suited for my example - VGG16, VGG19, ResNet, Inception etc.
+		10. Moment of realization:
+			1. Training 15Mn params with 0.013Mn images - is it OK?
+			2. Definitely the weights are not updating - too deep layers, vanishing gradient?
+			3. The Learning Rate?
+
+	3. The Vannila way:
+
+	I have decided that I will start with the "basic"
+		2. Prepare the list of "secret ingredients" - the hyperparameters and model settings
+		3. And the list is long (in no order of priority):
+			1. Image input size ( How resizing changes coputaion time, model complexity, information loss)
+			2. Train-Validation split
+			3. Batch size  - Train size, Validation Size
+			4. Image normalization, Image standardization, Image Centre - Featurewise, Samplewise
+			5. Image rescaling
+			6. Data augmentation
+				1. Rotation, Height Shift, width shift, vertical flip, horizontal flip etc.
+				2. Cutouts
+			7. CNN
+				1. filter size, number of filters
+				2. SeparableConv2D vs Conv2D (CNN)
+				3. Receptive field
+				4. 1x1 filters for size reduction
+				5. Average Pool vs MaxPool
+				6. Activation function (A)
+				7. Droupout (DO)
+				8. Batch Normalization (BN)
+				9. Order of CNN, BN, DO, BN
+				10. padding, stride
+				11. Depth of Network
+				12. Final output size of channels before Dense/Flat layers
+			8. Global Average Pooling vs Dense Layers vs combination
+			9. Loss function and corresponding activation function in final layer
+			10. Loss weight for each label
+			11. Choice of optimizer - SGD, Adam, RMSprop etc.
+			12. Learning rate:
+				1. suitable learning rate for our architecture
+				2. Learning rate scheduler
+				3. Cyclic Learning rate
+				4. Cyclic Momentum
+			13. ModelCheckpoint
+			14. Early Stopping
+			15. Model train/val loss/accuracy Plot
+			16. Total Parameters in model
+			17. GradCAM
+			18. Skip Connection
+			19. F1 Score for classes
+	
+		I have started from scratch as I need to train my model desperately:
+	
+		Starter Vanilla model:
+			1. A simple model with input shape (64,64,3) after resizing images
+			2. Fewer parameters to train ( ~50,000 vs 14,000,000 as compared to starter code)
+			3. SGD optimizer with some LR and Decay factor
+			4. I have seen my model started learning  but loss plateau after some time
+			5. The model learned two labels with decent accuracy - Gender(~77%) and Pose(~75%)
+			6. I got confidence in this model started building upon this model
+			7. No data augmentation
+	
+	4. Strategy on top of the vanilla model:
+		1. Increase the depth of the network  - No OOM for colab
+		2. Scheduling LR based previous experiments
+		3. Channel number and stacking of CNNs
+		4. Maxpool vs AvgPool
+		5. Skip connection
+		6. Only GAP, Only Dense, GAP+Dense
+		7. Data Augmentation
+			1. Rescaliing vs Standardization
+			2. Featurewise vs Samplewise
+		8. Order of -CNN-RELU-DO-BN-
+	
+	I have tried many combination some of the factors mentioned above
+	
+	5. Outcome of above experiments:
+		1. The model was able to learn labels Gender and Pose with decent accuracy( ~86% and ~81%)
+		2. The model was not learning other labels efficiently
+		3. Some Labels like Pose and Age are stuck at same validation accuracy. This means the model is not learning for these labels and predicting some default value
+		4. Resizing image increases training spped
+		5. Batch Size decreases the training speed. The effect of batch size on val_acc can not be established clearly by my experiments
+		6. I had run a maximum of 50 epochs for all these experiments
+	
+	6. Things I could try in 2020:
+		1. Experiment more with RF
+		3. Create better CNN blocks
+		4. Cyclic LR for superconvergence
+		5. Cyclic momentum
+		6. Convergence rate vs computation rate trade-off
+		7. Training models for longer period of time/epochs - It might be possible labels that are hard to train start learning
+		8. Cutout and GradCAM technique to improve the model
+		9. Try model architectures like VGG, Resnet, InceptionNet etc.
+		10. Kernel Regulizer in CNN
+		13. Why validation is jumping a lot in some experiments
+		14. Interaction of various parameters
+		15. Loss weights
+		16. See all the videos of Rohan's Lecture :)
+
+	7. Conclusion:
+		1. Start with simple model and build upon it
+		2. Change few parameters(even one parameter) at once and log the changes after training
+		3. Once study the behaviour of one parameter is understood, move on to next parameter
+		4. See the how parameters change in relatioship with each other
+		5. Try to find optimal parameters after few experiments
+		6. Try data augmentation in last
+		7. Avoid data leakage while training. Set random_state = 'any integer like 404' in train test split code for same split in each experiment
+		8. You can not apply suggestions from Blogs to your model blindly. The dataset, architechture and the problem has to a lot with thumb rule suggestions present in these blogs
+		
+		
+
+Result of Final Model:
+
+I have tried many thigs but could not achieve great results. Not only my models were, I was learning too. Hopefully, I will get there some day.
+
+Best Model Name: Vannila8
+
+Validation accuracy of best model:
+'age_output_acc': 40.7738, 
+'bag_output_acc': 66.369, 
+'emotion_output_acc': 72.9663, 
+'footwear_output_acc': 61.5575, 
+'gender_output_acc': 83.2837, 
+'image_quality_output_acc': 54.7619, 
+'pose_output_acc': 79.4643, 
+'weight_output_acc': 65.0298
+
+Number of parameters: 555,638
+
+Few things:
+	1. I have put all the experiments in a PDF - "EIP_Assignment5_Strategy - Vanilla Experiments - Important.pdf" in the Assignment5 folder
+		1. It has all values of parameters that use or changed in the experiments
+		2. I have built over 30-models from but could record only 17 of them
+		3. You need to zoom a bit
+	2. I have put train-val loss plots in the the folder - "LossPlot"
+	3. Apart from best model, there other interesing models in the folder - "Other_Models"
+	4. Epoch of final model is in attached PDF/text file
+	5. Experimental models in experiment folder
+
+End Note:
+
+1. I am able to realise in past 7 days of turmoil and sleepless nights that Deep learning is an art and science at the same time. It will need time to understand Deep Learning
+2. You have to understand the architecture, intuition, basic maths behind the scenes and reading a lot of papers
+3. You need to do experiments to build your own intuition in the right direction and this is the most crucial part
+
+I would like to thank Rohan for putting his time and effort for opening new possibilities for people in Deep Learning and Computer Vision.
+
+Happy New Year to All!!
+
+Quote for me in 2020: "Of all that is good, sublimity is supreme. Succeeding is the coming together of all that is beautiful. Furtherance is the agreement of all that is just. Perseverance is the foundation of all actions" - Lao Tzu
+
+Chandan
+
+	
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
